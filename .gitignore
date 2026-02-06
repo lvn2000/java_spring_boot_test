@@ -1,31 +1,73 @@
 # IDE
 .idea/
 .vscode/
+.eclipse/
+.classpath
+.project
+.settings/
+.factorypath
+*.iml
+*.iws
+*.ipr
 *.swp
 *.swo
 *~
 .DS_Store
+Thumbs.db
+
+# Metals Language Server
+.metals/
+.bloop/
+.lh/
+metals.mv.db
+metals.mv.db.log
+metals.h2.db
+metals.h2.db.lock
 
 # Build
 target/
 build/
+out/
 *.class
 *.jar
+*.jar.original
 *.war
 *.ear
+*.zip
 
 # Maven
 .mvn/
 mvnw
 mvnw.cmd
+dependency-reduced-pom.xml
+pom.xml.versionsBackup
 
 # Gradle
 .gradle/
 gradle/
+gradlew
+gradlew.bat
+
+# Metadata
+.metadata/
+*.classpath
+.springBeans
 
 # Dependencies
 node_modules/
 *.lock
+.m2/
+.gradle-cache/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+*.h2.db
+*.mdb
+*.accdb
+data/
+databases/
 
 # Logs
 *.log
@@ -35,3 +77,5 @@ logs/
 .env
 .env.local
 *.properties.local
+application-local.yml
+application-dev.yml
