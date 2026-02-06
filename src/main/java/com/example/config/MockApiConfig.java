@@ -38,11 +38,15 @@ public class MockApiConfig {
      */
     public Map<String, String> getCountryMapping(Long countryId) {
         String mapping = countries.getOrDefault(String.valueOf(countryId), "en|US");
-        String[] parts = mapping.split("\\|");
-        
+        String[] parts = mapping.split("\\|", -1);
+        if (parts.length != 2 || parts[0].isEmpty() || parts[1].isEmpty()) {
+            mapping = "en|US";
+            parts = mapping.split("\\|", -1);
+        }
+
         Map<String, String> result = new HashMap<>();
-        result.put("lang", parts.length > 0 ? parts[0] : "en");
-        result.put("country", parts.length > 1 ? parts[1] : "US");
+        result.put("lang", parts[0]);
+        result.put("country", parts[1]);
         return result;
     }
     
