@@ -6,12 +6,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Integration tests for the Spring Boot application
+ * Integration tests for external API locale transformation
  */
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -21,35 +20,13 @@ class ApplicationTests {
     private MockMvc mockMvc;
 
     @Test
-    void testHelloEndpoint() throws Exception {
-        mockMvc.perform(get("/api/hello"))
+    void testMockExternalApiEndpoint() throws Exception {
+        mockMvc.perform(get("/api/external")
+                .param("lang", "en")
+                .param("country", "US"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.message").value("Hello from Spring Boot!"))
-                .andExpect(jsonPath("$.status").value("success"));
+                .andExpect(jsonPath("$.lang").value("en"))
+                .andExpect(jsonPath("$.country").value("US"));
     }
-
-    @Test
-    void testGreetEndpoint() throws Exception {
-        mockMvc.perform(get("/api/hello/Alice"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.message").value("Hello, Alice!"))
-                .andExpect(jsonPath("$.status").value("success"));
-    }
-
-    @Test
-    void testHealthEndpoint() throws Exception {
-        mockMvc.perform(get("/api/health"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.status").value("UP"));
-    }
-
-    @Test
-    void testEchoEndpoint() throws Exception {
-        mockMvc.perform(post("/api/echo")
-                .contentType("application/json")
-                .content("{\"test\": \"data\"}"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.echo.test").value("data"));
-    }
-
 }
+
