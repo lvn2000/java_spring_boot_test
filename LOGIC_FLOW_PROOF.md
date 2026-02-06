@@ -111,7 +111,7 @@ CLIENT REQUEST
 ┌─────────────────────────────────────────────────────────┐
 │ STEP 7: COMMIT TRANSACTION                             │
 │                                                         │
-│ If all operations succeede:                            │
+│ If all operations succeeded:                           │
 │   → COMMIT (persist data)                              │
 │                                                         │
 │ If any error occurred:                                 │
