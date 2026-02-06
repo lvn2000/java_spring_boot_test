@@ -32,7 +32,7 @@ public class ExternalApiService {
     private final LocaleStorageService localeStorageService;
     private final LanguageTransformer languageTransformer;
     
-    @Value("${external.api.url:http://localhost:8080/api/external}")
+    @Value("${external.api.url}")
     private String externalApiUrl;
 
     @Autowired
